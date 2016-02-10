@@ -1,4 +1,4 @@
-var Timer = require('../metrics/timer');
+var Timer = require('../src/timer');
 
 var test = function(callback){
   console.log("\nCreating a new timer, updating 10 times / sec for 30 secs");
