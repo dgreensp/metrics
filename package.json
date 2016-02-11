@@ -1,18 +1,19 @@
 {
-  "name": "metrics",
-  "description": "A node.js port of Coda Hale's metrics library.  In use at Yammer.",
-  "version": "0.1.9",
+  "name": "hhs-metrics",
+  "description": "Modified version of 'metrics' npm module",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mikejihbe/metrics.git"
+    "url": "git://github.com/harisiva/metrics.git"
   },
-  "author": "Mike Ihbe <mikejihbe@gmail.com> (mikeihbe.com)",
-  "directories": {
-    "lib": "."
-  },
+  "author": "Hari Sivaramakrishnan",
+  "directories": {},
   "engines": {
-    "node": ">=0.10.x"
+    "node": ">=5.4.1"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "sinon": "^1.17.3"
+  }
 }

@@ -26,25 +26,6 @@ How to Use
 metrics = require('metrics');
 ```
 
-**Start a metrics Server**
-
-```javascript
-var metricsServer = new metrics.Server(config.metricsPort || 9091);
-```
-
-Servers are only one way to report your metrics.  It's actually a thin layer on top of metrics.Report, which you could use to build other reporting mechanisms.
-
-**Add the metrics to the server**
-
-```javascript
-metricsServer.addMetric('com.co.thingA', counter);
-metricsServer.addMetric('com.co.thingB', hist1);
-metricsServer.addMetric('com.co.thingC', hist2);
-metricsServer.addMetric('com.co.thingD', meter);
-metricsServer.addMetric('com.co.thingE', timer);
-```
-
-
 Advanced Usage
 --------------
 Typical production deployments have multiple node processes per server.  Rather than each process exposing metrics on different ports, it makes more sense to expose the metrics from the "master" process.  Writing a thin wrapper around this api to perform the process communication is trivial, with a message passing setup, the client processes could look something like this:

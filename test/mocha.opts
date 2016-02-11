@@ -1,0 +1,10 @@
+--check-leaks
+--full-trace
+--inline-diffs
+--recursive
+--reporter dot
+--slow 75
+--timeout 3000
+--ui bdd
+
+--require test/bootstrap.js
