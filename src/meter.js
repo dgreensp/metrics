@@ -36,6 +36,10 @@ class Meter {
     return [this._m1Rate, this._m5Rate, this._m15Rate];
   }
 
+  get mean() {
+    return this._count / (new Date().getTime() - this.startTime) * 1000;
+  }
+
   /**
    * Updates the meter with the occurrence of an optional number of events.
    * @param {?number} [opt_value] If not provided, assumed to be 1.
@@ -47,6 +51,22 @@ class Meter {
     this._m1Rate.update(value);
     this._m5Rate.update(value);
     this._m15Rate.update(value);
+  }
+
+  /**
+   * Returns an object that is the summary of this metric.
+   * @returns {{}}
+   */
+  summary() {
+    return {
+      type: this.type,
+      count: this._count,
+      m1: this._m1Rate.average,
+      m5: this._m5Rate.average,
+      m15: this._m15Rate.average,
+      mean: this.mean,
+      unit: 'seconds'
+    };
   }
 }
 

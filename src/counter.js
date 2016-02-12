@@ -54,7 +54,17 @@ class Counter {
     if (this._count < 0) {
       this._count = 0;
     }
+  }
 
+  /**
+   * Returns an object that is the summary of this metric.
+   * @returns {{}}
+   */
+  summary() {
+    return {
+      type: this.type,
+      count: this._count
+    };
   }
 }
 

@@ -55,18 +55,17 @@ class Histogram {
       this.min = value < this.min ? value : this.min;
     }
 
+    this.sum += value;
     this._updateVariance(value);
   }
 
   /**
    * Gets histogram values at the provided percentile values.
-   * @param {[number]} percentiles
+   * @param {[number]} [opt_percentiles]
    * @returns {{}}
    */
-  getPercentiles(percentiles) {
-    if (!percentiles) {
-      percentiles = DEFAULT_PERCENTILES;
-    }
+  getPercentiles(opt_percentiles) {
+    const percentiles = opt_percentiles || DEFAULT_PERCENTILES;
 
     let values = this.sample.values.map(v => parseFloat(v)).sort((a, b) => a - b);
     let scores = {};
@@ -95,12 +94,36 @@ class Histogram {
     this.sample.clear();
     this.min = null;
     this.max = null;
+    this.sum = 0;
 
     // These are for the Welford algorithm for calculating running variance
     // without floating-point doom.
     this.varianceM = null;
     this.varianceS = null;
     this.count = 0;
+  }
+
+  /**
+   * Returns an object that is the summary of this metric.
+   * @returns {{}}
+   */
+  summary() {
+    var percentiles = this.getPercentiles();
+    return {
+      type: this.type,
+      min: this.min,
+      max: this.max,
+      sum: this.sum,
+      variance: this.variance,
+      mean: this.mean,
+      std_dev: this.stdDev,
+      count: this._count,
+      median: percentiles[0.5],
+      p75: percentiles[0.75],
+      p95: percentiles[0.95],
+      p99: percentiles[0.99],
+      p999: percentiles[0.999]
+    };
   }
 
   _updateVariance(value) {

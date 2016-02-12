@@ -1,5 +1,5 @@
 {
-  "name": "hhs-metrics",
+  "name": "metrics",
   "description": "Modified version of 'metrics' npm module",
   "version": "0.1.0",
   "repository": {

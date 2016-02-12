@@ -66,4 +66,12 @@ describe('Counter', () => {
       assert.equal(counter.count, 0);
     });
   });
+
+  it('summary', () => {
+    counter.increment(5);
+    assert.deepEqual(counter.summary(), {type: MetricsTypes.Counter, count: 5});
+
+    counter.decrement(2);
+    assert.deepEqual(counter.summary(), {type: MetricsTypes.Counter, count: 3});
+  });
 });
