@@ -40,7 +40,7 @@ class Histogram {
    * @param {number} value
    */
   add(value) {
-    this.count++;
+    this.count = this.count + 1;
     this.sample.add(value);
 
     if (this.max === null) {
@@ -67,12 +67,12 @@ class Histogram {
   getPercentiles(opt_percentiles) {
     const percentiles = opt_percentiles || DEFAULT_PERCENTILES;
 
-    let values = this.sample.values.map(v => parseFloat(v)).sort((a, b) => a - b);
+    const values = this.sample.values.map(v => parseFloat(v)).sort((a, b) => a - b);
     let scores = {};
 
     for (let i = 0; i < percentiles.length; i++) {
-      let pos = percentiles[i] * (values.length + 1);
-      let percentile = percentiles[i];
+      const percentile = percentiles[i];
+      const pos = percentile * (values.length + 1);
 
       if (pos < 1) {
         scores[percentile] = values[0];

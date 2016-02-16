@@ -14,7 +14,4 @@ describe('Histogram', () => {
   it('instantiable', () => {
     assert.equal(histogram.type, MetricsTypes.Histogram);
   });
-
-  it('add', () => {
-  });
 });
