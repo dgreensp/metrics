@@ -117,7 +117,7 @@ class Histogram {
       variance: this.variance,
       mean: this.mean,
       std_dev: this.stdDev,
-      count: this._count,
+      count: this.count,
       median: percentiles[0.5],
       p75: percentiles[0.75],
       p95: percentiles[0.95],
