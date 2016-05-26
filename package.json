@@ -1,7 +1,7 @@
 {
   "name": "metrics",
   "description": "Modified version of 'metrics' npm module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/harisiva/metrics.git"
